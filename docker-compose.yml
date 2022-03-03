@@ -1,0 +1,21 @@
+version: "3.8"
+
+# Deployable Collector Host containers
+
+services:
+  imaprelay:
+    image: "imaprelay:latest"
+    build:
+      dockerfile: "./docker/Dockerfile"
+      context: "./"
+    environment:
+      - "IMAP_HOSTNAME=${IMAP_HOSTNAME}"
+      - "IMAP_USERNAME=${IMAP_USERNAME}"
+      - "IMAP_PASSWORD=${IMAP_PASSWORD}"
+      - "SMTP_HOSTNAME=${SMTP_HOSTNAME}"
+      - "SMTP_USERNAME=${SMTP_USERNAME}"
+      - "SMTP_PASSWORD=${SMTP_PASSWORD}"
+      - "RELAY_TO=${RELAY_TO}"
+      - "MESSAGE_SOURCE=${MESSAGE_SOURCE}"
+      - "MESSAGE_DESTINATION=${MESSAGE_DESTINATION}"
+      - "POLLING_INTERVAL=${POLLING_INTERVAL}"
